@@ -8,6 +8,7 @@ import Games from './Games'
 
 function App() {
   const [user, setUser] = useState(null);
+  console.log(user)
 
   useEffect(() => { //auto-login
     fetch("/me").then((r) => { 
@@ -31,7 +32,7 @@ function App() {
       <Switch>
 
         <Route exact path="/">
-          <Games onLogout={handleLogout} /> 
+          <Games onLogout={handleLogout} user={user} /> 
         </Route>
 
         <Route exact path="/games/">

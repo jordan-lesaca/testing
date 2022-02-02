@@ -1,4 +1,5 @@
 import GameItem from './GameItem'
+import GameForm from './GameForm'
 import { useEffect, useState } from 'react'
 
 
@@ -13,6 +14,10 @@ function Games( { user, onLogout } ) {
 
   function removeGame(game){
     setGames((games)=> games.filter(g => g.id !== game.id))
+  }
+
+  function addGame(game){
+    setGames([...games, game])
   }
 
   function handleLogout() {
@@ -43,6 +48,7 @@ useEffect(() => {
   return (
     <div>
         <h1>GAMES.js</h1>
+        <GameForm user={user} addGame={addGame} />
         {games.map(game => 
           <GameItem editGame={editGame} 
           removeGame={removeGame}

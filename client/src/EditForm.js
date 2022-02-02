@@ -5,6 +5,7 @@ function EditForm({ handleEditButtonClick, editGame, game, user }){
     const [ release_year, setRelease_year ] = useState(game.release_year)
     const [ genre, setGenre ] = useState(game.genre)   
 
+
     function handleSubmit(e){
         e.preventDefault()
         setTitle("")
@@ -19,7 +20,8 @@ function EditForm({ handleEditButtonClick, editGame, game, user }){
             body: JSON.stringify({
                 title, 
                 release_year, 
-                genre
+                genre, 
+                user_id: user.id
             }),
         })
           .then(r => r.json())
