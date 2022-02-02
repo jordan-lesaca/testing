@@ -1,7 +1,7 @@
 import EditForm from './EditForm'
 import { useState } from 'react'
 
-function GameItem({ user, game, editGame }) {
+function GameItem({ user, game, editGame, removeGame }) {
   const [ editForm, setEditForm ] = useState(false)
   const [ editButton, setEditButton ] = useState("Show Edit Form")
 
@@ -14,6 +14,12 @@ function GameItem({ user, game, editGame }) {
         setEditButton("Show Edit Form")
     } 
 
+    function handleDelete(game){
+      fetch(`/games/${game.id}`, {method: "DELETE"}).then(r => {
+          removeGame(game)
+      })
+    }
+
   return (
     <div>
         <h1> GAME ITEM HERE</h1>
@@ -21,7 +27,9 @@ function GameItem({ user, game, editGame }) {
           <h1> {game.title} </h1>
           <h2> {game.release_year} </h2>
           <h3> {game.genre} </h3> 
-          
+
+          <button onClick={e => handleDelete(game)}>Delete</button>
+
         <button onClick={e => 
           handleEditButtonClick()}> {editButton} </button>
             

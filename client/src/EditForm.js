@@ -42,7 +42,6 @@ function EditForm({ handleEditButtonClick, editGame, game, user }){
             </form>
         </div>
     )
-
 }
 
 export default EditForm 

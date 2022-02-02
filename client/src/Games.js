@@ -1,7 +1,8 @@
 import GameItem from './GameItem'
 import { useEffect, useState } from 'react'
 
-function Games( { user, handleLogout } ) {
+
+function Games( { user, onLogout } ) {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
@@ -9,6 +10,16 @@ function Games( { user, handleLogout } ) {
       .then((r) => r.json())
       .then(setGames);
   }, []);
+
+  function removeGame(game){
+    setGames((games)=> games.filter(g => g.id !== game.id))
+  }
+
+  function handleLogout() {
+    fetch("/logout", {
+      method: "DELETE",
+    }).then(() => onLogout());
+  }
 
 
   function editGame(game){
@@ -34,6 +45,7 @@ useEffect(() => {
         <h1>GAMES.js</h1>
         {games.map(game => 
           <GameItem editGame={editGame} 
+          removeGame={removeGame}
           game={game} 
           key={game.id} 
           user={user}/>)}

@@ -9,11 +9,10 @@ import Games from './Games'
 function App() {
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
+  useEffect(() => { //auto-login
     fetch("/me").then((r) => { 
       if (r.ok) { 
         r.json().then((user) => setUser(user))}
-    
 })}, []);
 
   function handleLogin(user) {
@@ -32,27 +31,15 @@ function App() {
       <Switch>
 
         <Route exact path="/">
-          <Games handleLogout={handleLogout} /> 
+          <Games onLogout={handleLogout} /> 
         </Route>
 
         <Route exact path="/games/">
 
         </Route>
-
-
       </Switch>
     </div>
   );
 }
 
 export default App;
-
-// notes:
-// Log-in seems to be case sensitive
-
-
-/* <Route exact path="/login">
-/* <Login onLogin={handleLogin}  /> */
-// </Route> 
-
-//<Games user={user} onLogout={handleLogout}/>
