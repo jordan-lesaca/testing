@@ -1,36 +1,27 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import GameItem from './GameItem'
+import { useEffect, useState } from 'react'
 
-function Article() {
-  const [game, setGame ] = useState(null)
-  const { id } = useParams();
+function Games( { handleLogout } ) {
+  const [games, setGames] = useState([]);
 
   useEffect(() => {
-    setGame("")
-    fetch(`/games/${id}`).then((r) => {
-      if (r.ok) {
-        r.json().then((game) =>
-          setGame(game)
-        );
-      } else {
-        r.json().then((r) =>
-        setGame(null),
+    fetch("/games")
+      .then((r) => r.json())
+      .then(setGames);
+  }, []);
 
-        );
-      }
-    });
-  }, [id]);
 
-  console.log(game)
-
-//   const { title, author, date, content, minutes_to_read } = article;
-//   const emojis = makeEmojiList(minutes_to_read);
 
   return (
     <div>
-      <h1>{game}</h1>
+        <h1>GAMES.js</h1>
+        {games.map(game => 
+        <GameItem game={game} key={game.id} />)} 
+
+        <h3>GAMES.JS END ---  --- </h3>
+        <button onClick={handleLogout}>LOG OUT</button>
     </div>
   );
 }
 
-export default Article;
+export default Games;
