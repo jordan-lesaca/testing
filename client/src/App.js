@@ -7,19 +7,26 @@ import Games from './Games'
 // import LoginForm from './LoginForm'
 
 
-//To do/Stretch: 
+
+//Done: 
 //Add Signup x
 //Add response for user when not able to log in x
+
+//Stretch: 
 //Add NavBar
 //Make it so you can view only your games
 //Clean up code
 //Maybe add another model? 
 //CSS?
 //Check on validations and auths x
+
+
+//To Do
+//Add NavBar - Started
 //Add additional attributes for sign up
 //Have sign up form take you to another page
 //When alert given, give option to click ok to close the window
-//Add button for signup 
+//Add button for signup - Started
 
 function App() {
   const [user, setUser] = useState(null);
