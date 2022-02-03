@@ -30,7 +30,7 @@ function SignupForm({ setUser }){
                 id="username" 
                 value={username} 
                 onChange={e => setUsername(e.target.value)}/> 
-
+                <button type="submit"> {console.log("Submit")} Submit </button>
             </form>
         </div>
     )
