@@ -1,6 +1,7 @@
 import { useState } from "react";
+import SignupForm from './SignupForm'
 
-function Login({ onLogin }) {
+function Login({ onLogin, setUser }) {
   const [username, setUsername] = useState("");
 
   function handleSubmit(e) {
@@ -18,7 +19,11 @@ function Login({ onLogin }) {
     });
   }
 
+
+
+
   return (
+    <div>
     <form onSubmit={handleSubmit}>
       <h3>Login With Username</h3>
       <label htmlFor="username">Username: </label>
@@ -29,7 +34,11 @@ function Login({ onLogin }) {
         onChange={(e) => setUsername(e.target.value)}
       />
       <button type="submit">Login</button>
-    </form>
+
+    <h4>Create an Account:</h4>
+     </form>
+        <SignupForm setUser={setUser} />
+      </div>
   );
 }
 

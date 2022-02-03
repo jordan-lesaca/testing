@@ -3,7 +3,7 @@ class GamesController < ApplicationController
   
     def index
       games = Game.all.where(is_member_only: false).includes(:user)
-      render json: games, each_serializer: GameListSerializer
+      render json: games, each_serializer: GameSerializer
     end
   
     def show
