@@ -19,6 +19,7 @@ import Games from './Games'
 //Add additional attributes for sign up
 //Have sign up form take you to another page
 //When alert given, give option to click ok to close the window
+//Add button for signup 
 
 function App() {
   const [user, setUser] = useState(null);
