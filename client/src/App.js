@@ -8,14 +8,17 @@ import Games from './Games'
 
 
 //To do/Stretch: 
-//Add Signup
-//Add response for user when not able to log in 
+//Add Signup x
+//Add response for user when not able to log in x
 //Add NavBar
 //Make it so you can view only your games
 //Clean up code
 //Maybe add another model? 
 //CSS?
-//Check on validations and auths
+//Check on validations and auths x
+//Add additional attributes for sign up
+//Have sign up form take you to another page
+//When alert given, give option to click ok to close the window
 
 function App() {
   const [user, setUser] = useState(null);
