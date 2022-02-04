@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
   
   resources :games
-  # , only: [:index, :show]
   resources :users
-  # Routing logic: fallback requests for React Router.
-  # Leave this here to help deploy your app later!
-
 
   get "/me", to: "users#show"
   get "/mygames", to: "users#myGames"
@@ -15,3 +11,6 @@ Rails.application.routes.draw do
 
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end
+
+  # Routing logic: fallback requests for React Router.
+  # Leave this here to help deploy your app later!

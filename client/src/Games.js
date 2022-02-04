@@ -20,7 +20,7 @@ useEffect(() => {
     fetch(`/games`)
     .then((r) => r.json())
     .then(setGames)    
-    }, [] )
+    }, [])
 
   return (
     <div>

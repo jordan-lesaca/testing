@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_02_004710) do
+ActiveRecord::Schema.define(version: 2022_02_04_054116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 2022_02_02_004710) do
     t.integer "release_year"
     t.string "genre"
     t.bigint "user_id", null: false
+
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "is_member_only", default: false, null: false
     t.index ["user_id"], name: "index_games_on_user_id"
   end
 
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2022_02_02_004710) do
     t.string "username"
     t.integer "age"
     t.boolean "competitive"
+    
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

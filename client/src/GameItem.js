@@ -7,5 +7,4 @@ function GameItem({ game }) {
     </div>
   );
 }
-
 export default GameItem;
