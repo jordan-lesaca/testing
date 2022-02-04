@@ -5,9 +5,7 @@ function GameItem({ user, game, editGame, removeGame }) {
   const [ editForm, setEditForm ] = useState(false)
   const [ editButton, setEditButton ] = useState("Show Edit Form")
 
-  // const { id, title, release_year, genre } = game;
-
-  function handleEditButtonClick(){
+  function handleEditButton(){
     setEditForm(!editForm)
         !editForm ? 
         setEditButton("Hide Edit Form") : 
@@ -22,20 +20,16 @@ function GameItem({ user, game, editGame, removeGame }) {
 
   return (
     <div>
-        <h1> GAME ITEM HERE</h1>
-
-          <h1> {game.title} </h1>
-          <h2> {game.release_year} </h2>
-          <h3> {game.genre} </h3> 
-
-          <button onClick={e => handleDelete(game)}>Delete</button>
-
+        <h1> {game.title} </h1>
+        <h2> {game.release_year} </h2>
+        <h3> {game.genre} </h3> 
+        <button onClick={e => handleDelete(game)}>Delete</button>
+        <br/>
         <button onClick={e => 
-          handleEditButtonClick()}> {editButton} </button>
-            
+          handleEditButton()}> {editButton} </button>
             {editForm ? 
             <EditForm 
-            handleEditButtonClick={handleEditButtonClick}
+            handleEditButton={handleEditButton}
             editGame={editGame} 
             game={game} 
             user={user}/> : null} 

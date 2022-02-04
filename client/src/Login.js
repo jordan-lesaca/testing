@@ -19,26 +19,23 @@ function Login({ onLogin, setUser }) {
     });
   }
 
-
-
-
   return (
     <div>
-    <form onSubmit={handleSubmit}>
-      <h3>Login With Username</h3>
-      <label htmlFor="username">Username: </label>
-      <input
+      <form onSubmit={handleSubmit}>
+        <h3>Login:</h3>
+        <label htmlFor="username">Username: </label>
+        <input
         type="text"
         id="username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-      />
-      <button type="submit">Login</button>
-
-    <h4>Create an Account:</h4>
+        />
+        <button type="submit">Login</button>
      </form>
-        <SignupForm setUser={setUser} />
-      </div>
+
+    <h4>Create an account:</h4>
+      <SignupForm setUser={setUser} />
+    </div>
   );
 }
 

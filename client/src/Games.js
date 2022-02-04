@@ -6,12 +6,6 @@ import { useEffect, useState } from 'react'
 function Games( { user, onLogout } ) {
   const [games, setGames] = useState([]);
 
-  useEffect(() => {
-    fetch("/games")
-      .then((r) => r.json())
-      .then(setGames);
-  }, []);
-
   function removeGame(game){
     setGames((games)=> games.filter(g => g.id !== game.id))
   }
@@ -19,13 +13,6 @@ function Games( { user, onLogout } ) {
   function addGame(game){
     setGames([...games, game])
   }
-
-  function handleLogout() {
-    fetch("/logout", {
-      method: "DELETE",
-    }).then(() => onLogout());
-  }
-
 
   function editGame(game){
     const edited = games.map(g => {
@@ -43,12 +30,10 @@ useEffect(() => {
     .then(setGames)    
     }, [] )
 
-
-
   return (
     <div>
-        <h1>GAMES.js</h1>
-        <GameForm user={user} addGame={addGame} />
+        <h1>Welcome, {user.username}!</h1>
+
         {games.map(game => 
           <GameItem editGame={editGame} 
           removeGame={removeGame}
@@ -56,10 +41,11 @@ useEffect(() => {
           key={game.id} 
           user={user}/>)}
 
+        
+        <GameForm user={user} addGame={addGame} />
 
 
-        <button onClick={handleLogout}>LOG OUT</button>
-        <h3>GAMES.JS END ---  --- </h3>
+        <button onClick={onLogout}>LOG OUT</button>
     </div>
   );
 }

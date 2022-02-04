@@ -40,7 +40,7 @@ function EditForm({ handleEditButtonClick, editGame, game, user }){
                     <input type="number" id="release_year" value={release_year} onChange={e => setRelease_year(e.target.value)}/>
                 <label>Genre:</label>
                     <input type="text" id="genre" value={genre} onChange={e => setGenre(e.target.value)}/>
-                <button type="submit"> {console.log("Submit")} Submit </button>
+                <button type="submit"> Submit </button>
             </form>
         </div>
     )

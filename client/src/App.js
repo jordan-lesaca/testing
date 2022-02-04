@@ -3,14 +3,19 @@ import { Switch, Route } from 'react-router-dom';
 import Login from './Login'
 import Games from './Games'
 // import GameForm from './GameForm'
+import About from './About'
 // import Header from './Header'
 // import LoginForm from './LoginForm'
+import Home from './Home'
+import NavBar from './NavBar'
 
 
 
 //Done: 
 //Add Signup x
 //Add response for user when not able to log in x
+//Add button for signup x
+//Add additional attributes for sign up x
 
 //Stretch: 
 //Add NavBar
@@ -19,14 +24,6 @@ import Games from './Games'
 //Maybe add another model? 
 //CSS?
 //Check on validations and auths x
-
-
-//To Do
-//Add NavBar - Started
-//Add additional attributes for sign up
-//Have sign up form take you to another page
-//When alert given, give option to click ok to close the window
-//Add button for signup - Started
 
 function App() {
   const [user, setUser] = useState(null);
@@ -42,19 +39,30 @@ function App() {
     setUser(user);
   }
   
+  // function handleLogout() {
+  //   setUser(null);
+  // }
+
   function handleLogout() {
-    setUser(null);
+    fetch("/logout", {
+      method: "DELETE",
+    }).then(() => setUser(null));
   }
   
   if (!user) return <Login onLogin={handleLogin} setUser={setUser} />
 
   return (
     <div className="App">
-      <Switch>
+      <NavBar onLogout={handleLogout} />
+      <Switch>   
         <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/games">
           <Games onLogout={handleLogout} user={user} /> 
         </Route>
-        <Route exact path="/games/">
+        <Route exact path="/about">
+          <About />
         </Route>
       </Switch>
     </div>
