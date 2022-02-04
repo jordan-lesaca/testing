@@ -20,6 +20,7 @@ import MyGames from './MyGames'
 //Clean up code
 //Maybe add another model? 
 //Check on validations and auths x
+//Add Search Bar
 
 function App() {
   const [user, setUser] = useState(null);
@@ -45,7 +46,6 @@ function App() {
   function addGame(game){
     setGames([...games, game])
   }
-
 
   if (!user) return <Login onLogin={handleLogin} setUser={setUser} />
 

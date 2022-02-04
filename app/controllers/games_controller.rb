@@ -1,8 +1,9 @@
 class GamesController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
   
     def index
-      games = Game.all.where(is_member_only: false).includes(:user)
+      games = Game.all
       render json: games, each_serializer: GameSerializer
     end
   
@@ -12,8 +13,8 @@ class GamesController < ApplicationController
     end
 
     def create
-      game = Game.create(game_params)
-      render json: game
+      game = Game.create!(game_params)
+      render json: game, status: :created
     end
 
       def update
@@ -28,13 +29,17 @@ class GamesController < ApplicationController
     end
   
     private
+
+    def game_params
+      params.require(:game).permit(:title, :release_year, :genre, :user_id)
+    end
   
     def record_not_found
       render json: { error: "Game not found" }, status: :not_found
     end
 
-    def game_params
-      params.require(:game).permit(:title, :release_year, :genre, :user_id)
+    def render_unprocessable_entity_response(invalid)
+      render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
     end
   
   end

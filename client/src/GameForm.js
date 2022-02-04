@@ -21,10 +21,24 @@ function GameForm({ user, addGame}){
                 genre, 
                 user_id: user.id
             }),
-        })
-          .then(r => r.json())
-          .then(g => addGame(g))
-      }
+
+
+
+        }).then(r => {
+            if (r.ok) { r.json()
+                .then(game => addGame(game))
+            } else {r.json().then(errors => 
+                alert(errors.errors))
+            }
+          })
+        }
+
+
+
+
+
+
+
 
 return (
   <div>
