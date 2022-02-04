@@ -1,10 +1,9 @@
 import { useState } from 'react'
 
-function EditForm({ handleEditButtonClick, editGame, game, user }){
+function EditForm({ handleEditButton, editGame, game, user }){
     const [ title, setTitle ] = useState(game.title)
     const [ release_year, setRelease_year ] = useState(game.release_year)
     const [ genre, setGenre ] = useState(game.genre)   
-
 
     function handleSubmit(e){
         e.preventDefault()
@@ -27,7 +26,7 @@ function EditForm({ handleEditButtonClick, editGame, game, user }){
           .then(r => r.json())
           .then(g => {
               editGame(g)
-              handleEditButtonClick()
+              handleEditButton()
             })
       }
     

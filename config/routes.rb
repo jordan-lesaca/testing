@@ -3,11 +3,12 @@ Rails.application.routes.draw do
   resources :games
   # , only: [:index, :show]
   resources :users
-  resources :members_only_games, only: [:index, :show]
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
 
+
   get "/me", to: "users#show"
+  get "/mygames", to: "users#myGames"
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"  

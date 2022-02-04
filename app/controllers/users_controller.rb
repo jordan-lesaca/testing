@@ -11,6 +11,12 @@ class UsersController < ApplicationController
     render json: user
   end
 
+  def myGames
+    user = User.find(session[:user_id])
+    userGames = user.games
+    render json: userGames
+  end
+
   def create
     user = User.create!(user_params)
     render json: user, status: :created
@@ -25,5 +31,4 @@ class UsersController < ApplicationController
     render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
   end
   
-  end
-  
+  end 
