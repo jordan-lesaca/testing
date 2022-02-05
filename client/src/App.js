@@ -52,19 +52,25 @@ function App() {
   return (
     <div className="App">
       <NavBar onLogout={handleLogout} user={user} addGame={addGame}/>
+
       <Switch>   
+
         <Route exact path="/">
-          <Games onLogout={handleLogout} user={user} addGame={addGame}/> 
+          <Games user={user} addGame={addGame}/> 
         </Route>
+
         <Route exact path="/gameform">
-          <GameForm user={user} addGame={addGame} />
+          <GameForm user={user} addGame={addGame}/>
         </Route>
+
         <Route exact path="/mygames">
-          <MyGames user={user} />
+          <MyGames games={games} user={user} addGame={addGame}/>
         </Route>
+
         <Route exact path="/about">
           <About />
         </Route>
+
       </Switch>
     </div>
   );

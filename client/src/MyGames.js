@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import MyGamesCard from './MyGamesCard'
+import GameForm from './GameForm'
 
 
 function MyGames({ user }){
@@ -24,22 +25,27 @@ function MyGames({ user }){
         .then((r) => r.json())
         .then(setGames)    
         }, [] )
-    
+
+  function addGame(game){
+    setGames([...games, game])
+  }
 
     return (
         <div> 
             <h1> My Games </h1>
-            
-            {games.map(game => 
-            <MyGamesCard game={game} 
-            key={game.id} 
-            user={user}
-            editGame={editGame}
-            removeGame={removeGame}
-            />)}
 
+            <GameForm key={games.id} user={user} addGame={addGame} />
+
+            {games.map(game => 
+                <MyGamesCard game={game} 
+                key={game.id} 
+                user={user}
+                editGame={editGame}
+                removeGame={removeGame}
+            />)}
         </div>
     )
 }
+
 
 export default MyGames

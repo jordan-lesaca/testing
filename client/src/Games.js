@@ -1,3 +1,4 @@
+
 import GameItem from './GameItem'
 import { useEffect, useState } from 'react'
 
@@ -26,8 +27,6 @@ useEffect(() => {
     <div>
         <h1>Welcome, {user.username}!</h1>
         <h2>Here is a list of previously added games from your group:</h2>
-
-
 
         {games.map(game => 
           <GameItem 

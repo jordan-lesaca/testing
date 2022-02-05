@@ -6,7 +6,9 @@ function MyGamesCard({ user, game, editGame, removeGame }) {
     const [ editButton, setEditButton ] = useState("Show Edit Form")
 
     function handleDelete(game){
-        fetch(`/games/${game.id}`, {method: "DELETE"}).then(r => {
+        fetch(`/games/${game.id}`, 
+        {method: "DELETE"})
+          .then(r => {
             removeGame(game)
         })
       }

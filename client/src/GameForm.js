@@ -25,6 +25,7 @@ function GameForm({ user, addGame}){
             if (r.ok) { 
                 r.json()
                 .then(game => addGame(game))
+                
             } else {r.json().then(errors => 
                 alert(errors.errors))
             }
