@@ -23,13 +23,11 @@ function MyGamesCard({ user, game, editGame, removeGame }) {
   return (
     <div>
         <h1> {game.title} </h1>
-        <h2> {game.release_year} </h2>
+        <h2> {game.release_year}</h2>
         <h3> {game.genre} </h3> 
         <button onClick={e => handleDelete(game)}>Delete</button>
-        <button onClick={e => 
-          handleEditButton()}> {editButton} </button>
-            {editForm ? 
-            <EditForm 
+        <button onClick={e => handleEditButton()}> {editButton} </button>
+            {editForm ? <EditForm 
             handleEditButton={handleEditButton}
             editGame={editGame} 
             game={game} 

@@ -11,12 +11,12 @@ function App() {
   const [user, setUser] = useState(null);
   const [ games, setGames ] = useState([])
 
-  useEffect(() => { //auto-login
+  useEffect(() => {
     fetch("/me").then((r) => {  
       if (r.ok) { 
         r.json().then((user) => setUser(user))}
-        
-      })}, []);  
+      })
+    }, []);  
 
   function handleLogin(user) {
     setUser(user);
@@ -34,7 +34,6 @@ function App() {
 
   if (!user) return <Login onLogin={handleLogin} setUser={setUser} />
   
-
   return (
     <div className="App">
       <NavBar onLogout={handleLogout} user={user} addGame={addGame}/>

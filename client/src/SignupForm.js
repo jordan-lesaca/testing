@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'
 
 function SignupForm({ setUser }){
@@ -14,35 +13,32 @@ function SignupForm({ setUser }){
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({username, age, competitive}),
-        }).then(r => {
-            if (r.ok) { r.json()
-                .then(user => setUser(user))
-            } else {r.json().then(errors => 
-                alert(errors.errors))
-            }
-          })
+            }).then(r => {
+                if (r.ok) { r.json()
+                    .then(user => setUser(user))
+                } else {r.json().then(errors => 
+                    alert("Both Username and Age must be provided."),
+                )}
+            })
         }
 
     return(
         <div>
             <form onSubmit={handleSubmit}>
-
                 <label> Username: </label>
                 <input 
                 type="text" 
                 id="username" 
                 value={username} 
                 onChange={e => setUsername(e.target.value)}/> 
-                <br/>
-
+            <br/>
                 <label> Age: </label>
                 <input type="number" 
                 id="age" 
                 value={age}
                 onChange={e => 
                 setAge(e.target.value)}/>
-                <br/>
-
+            <br/>
                 <label> Competitve: </label>
                 <select id="competitive" 
                 name="competitive"
@@ -52,14 +48,11 @@ function SignupForm({ setUser }){
                 <option value={true}>Yes</option>
                 <option value={false}>No</option>
                 </select>
-                <br/>
-                <br/>
-                
+            <br/>
+            <br/>
                 <button type="submit"> Submit </button>
-
             </form>
         </div>
     )
 }
-
 export default SignupForm

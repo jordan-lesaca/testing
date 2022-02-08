@@ -6,4 +6,3 @@ class Game < ApplicationRecord
     validates :release_year, numericality: { less_than: 2023, message: "Must have valid date" }
     validates :genre, presence: true
 end
-
