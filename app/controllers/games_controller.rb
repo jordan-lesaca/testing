@@ -1,8 +1,8 @@
 class GamesController < ApplicationController
-  rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+  before_action :authorize
 
   def index 
-    games = Game.all.order(release_year: :desc) 
+    games = Game.all
     render json: games
   end
 
@@ -36,6 +36,10 @@ class GamesController < ApplicationController
 
   def render_unprocessable_entity_response(invalid)
     render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
+  end
+
+  def authorize 
+    render json: { errors: ["Not authorized"]}, status: :unauthorized unless session.include? :user_id
   end
 
 end
